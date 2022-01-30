@@ -64,9 +64,30 @@ class War {
     }
   }
 
-   vikingAttack(){}
+   vikingAttack(){
+     const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)] 
+     const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
 
-   saxonAttack(){}
+     const attack = randomSaxon.receiveDamage(randomViking.strength)
+     if(randomSaxon.health <= 0){
+       this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1)
+     }
+
+     return attack
+   }
+
+
+   saxonAttack(){
+    const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)] 
+    const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
+
+    const attack = randomViking.receiveDamage(randomSaxon.strength)
+    if(randomViking.health <= 0){
+      this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1)
+    }
+
+    return attack
+   }
 
 
    showStatus(){
